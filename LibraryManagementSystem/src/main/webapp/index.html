@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>e-Library</title>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+    <style>
+        /* Centering the title at the top */
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Centering the buttons horizontally under the title */
+        .center-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px; /* Space between title and buttons */
+        }
+
+        .center-buttons form {
+            margin: 0 10px; /* Space between forms */
+        }
+
+        .center-buttons button {
+            width: 150px; /* Button width */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Welcome message centered at the top -->
+<h1>Welcome to Library</h1>
+
+<!-- Centered buttons under the title -->
+<div class="container-fluid center-buttons">
+    <!-- Admin Button -->
+    <form action="adminlogin.jsp" method="get">
+        <button type="submit" class="btn btn-primary btn-lg">Admin</button>
+    </form>
+
+    <!-- User Button -->
+    <form action="userlogin.jsp" method="get">
+        <button type="submit" class="btn btn-primary btn-lg">User</button>
+    </form>
+</div>
+
+<!-- Script files -->
+<script src="jquery.min.js"></script>
+<script>
+    // Function to check the session status via AJAX
+    function checkSession() {
+        $.get('checkSession', function(response) {
+            if (response === "logged_in") {
+                // If logged in, redirect to the current page
+                window.location.href = window.location.href;
+            }
+        });
+    }
+
+    // Call the session check when the page loads
+    window.onload = checkSession;
+</script>
+<script src="bootstrap.min.js"></script>
+
+</body>
+</html>
